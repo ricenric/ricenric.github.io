@@ -2,7 +2,7 @@
   "name": "ricenric.github.io",
   "version": "1.0.0",
   "type": "module",
-  "description": "Welcome to my personal homepage! This project is an interactive carousel-based website built with **Tailwind CSS** and **JavaScript**. It showcases\r all my applications that I have under this account and acts as a directory to those applications.",
+  "description": "Welcome to my personal homepage! This project is an interactive carousel-based website built with **Tailwind CSS** and **JavaScript**. It showcases all my applications that I have under this account and acts as a directory to those applications.",
   "scripts": {
     "dev": "vite",
     "build": "tailwindcss -i ./style.css -o ./dist/style.css",
@@ -31,7 +31,6 @@
     "detect-libc": "^2.1.2",
     "fdir": "^6.5.0",
     "lightningcss": "^1.32.0",
-    "lightningcss-win32-x64-msvc": "^1.32.0",
     "nanoid": "^3.3.12",
     "picocolors": "^1.1.1",
     "picomatch": "^4.0.4",
