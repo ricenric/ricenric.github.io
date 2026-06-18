@@ -6,14 +6,14 @@
     <title>ericOS Homepage</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="/assets/favicon-CF_X8svY.png">
-  <script type="module" crossorigin src="/assets/index-Buwvwr4q.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-C9BmAr3k.css">
+  <script type="module" crossorigin src="/assets/index-B17ZPS1b.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DvSSD7V9.css">
 </head>
 <body class="bg-slate-950 transition-colors text-slate-200 min-h-screen flex flex-col justify-between p-8 px-2 overflow-hidden select-none relative">
     
     <canvas id="petal-canvas" class="absolute top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
 
-    <header class="relative z-10 flex justify-between items-center w-full max-w-7xl mx-auto border-b border-slate-700 pb-4">
+    <header class="relative z-10 flex justify-between items-center w-full max-w-7xl xl:max-w-[90vw] 2xl:max-w-[75vw] mx-auto border-b border-slate-700 pb-4">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-500/20">
                 EC
@@ -26,7 +26,31 @@
         </button> -->
     </header>
 
-    <main class="relative z-10 w-full max-w-7xl mx-auto my-auto py-12 flex flex-col justify-center gap-6">
+    <div id="options-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <aside id="options-menu" class="fixed top-5 left-6 h-[90vh] w-70 bg-slate-900 border border-slate-700 shadow-2xl rounded-3xl transform -translate-x-[120%] transition-transform duration-500 ease-out z-50 flex flex-col p-6">
+    
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Settings</h2>
+            <button id="close-options-btn" class="text-slate-500 hover:text-white transition-colors cursor-pointer">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <div class="flex-1 space-y-4">
+            <div class="bg-slate-800/50 p-4 rounded-2xl flex items-center justify-between border border-slate-700/50">
+                <span class="text-sm font-medium">Light Mode</span>
+                <input type="checkbox" id="theme-toggle" unchecked class="toggle-checkbox">
+            </div>
+            
+            <div class="bg-slate-800/50 p-4 rounded-2xl flex items-center justify-between border border-slate-700/50">
+                <span class="text-sm font-medium">BGM</span>
+                <input type="checkbox" id="fx-toggle" unchecked class="toggle-checkbox">
+            </div>
+        </div>
+    </aside>
+
+    <main class="relative z-10 w-full max-w-7xl xl:max-w-[90vw] 2xl:max-w-[75vw] mx-auto my-auto py-12 flex flex-col justify-center gap-6">
 
         <div class="flex items-center gap-4">
 
@@ -55,12 +79,12 @@
 
                     <a href="/nte-checklist" data-card
                        class="carousel-card active animate-slide-up [animation-delay:0ms] opacity-0
-                              flex-shrink-0 w-96 flex flex-col gap-4 cursor-pointer group
+                              flex-shrink-0 w-[23vw] flex flex-col gap-4 cursor-pointer group
                               rounded-2xl">
-                        <div class="card-box relative w-full h-[395px] bg-slate-900/80 border border-slate-800/80 rounded-2xl overflow-visible transition-all duration-300 ease-out group-hover:bg-slate-900/90">
+                        <div class="card-box relative w-full h-[40vh] min-h-[320px] max-h-[560px] bg-slate-900/80 border border-slate-800/80 rounded-2xl overflow-visible transition-all duration-300 ease-out group-hover:bg-slate-900/90">
                             <img src="/assets/hotori_nte_application-j9v1kgAG.png"
                                  alt="Hotori"
-                                 class="absolute bottom-0 left-1/2 -translate-x-1/2 h-auto w-[600px] max-w-none
+                                 class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[110%] w-auto max-w-none
                                         object-contain pointer-events-none origin-bottom
                                         transition-all duration-300 ease-out z-20
                                         group-hover:scale-[1.04] group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]" />
@@ -73,14 +97,14 @@
 
                     <a href="#" data-card
                        class="carousel-card animate-slide-up [animation-delay:200ms] opacity-0
-                              flex-shrink-0 w-96 flex flex-col gap-4 cursor-pointer group
+                              flex-shrink-0 w-[23vw] flex flex-col gap-4 cursor-pointer group
                               rounded-2xl">
-                        <div class="card-box relative w-full h-[395px] bg-slate-900/80 border border-slate-800/80 rounded-2xl
+                        <div class="card-box relative w-full h-[40vh] min-h-[320px] max-h-[560px] bg-slate-900/80 border border-slate-800/80 rounded-2xl
                                     overflow-visible transition-all duration-300 ease-out
                                     group-hover:bg-slate-900/90">
                             <img src="/assets/jingliu_placeholder-BmXQ4oy2.webp"
                                  alt=""
-                                 class="absolute -bottom-8 left-[60%] -translate-x-1/2 h-auto w-[450px] max-w-none
+                                 class="absolute -bottom-8 left-[60%] -translate-x-1/2 h-[110%] w-auto max-w-none
                                         object-contain pointer-events-none origin-bottom
                                         transition-all duration-300 ease-out
                                         group-hover:scale-[1.05] group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]" />
@@ -92,35 +116,15 @@
                     </a>
 
                     <a href="#" data-card
-                       class="carousel-card animate-slide-up [animation-delay:400ms] opacity-0
-                              flex-shrink-0 w-96 flex flex-col gap-4 cursor-pointer group
-                              rounded-2xl">
-                        <div class="card-box relative w-full h-[395px] bg-slate-900/80 border border-slate-800/80 rounded-2xl
-                                    overflow-visible transition-all duration-300 ease-out
-                                    group-hover:bg-slate-900/90">
-                            <img src="/assets/ayaka_placeholder-1R7K9tnX.webp"
-                                 alt=""
-                                 class="absolute bottom-0 left-1/2 -translate-x-1/2 h-auto w-[680px] max-w-none
-                                        object-contain pointer-events-none origin-bottom
-                                        transition-all duration-300 ease-out
-                                        group-hover:scale-[1.05] group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]" />
-                        </div>
-                        <div class="text-center pointer-events-none pb-2">
-                            <h2 class="card-title text-xl font-bold tracking-wide text-slate-300 transition-colors">Genshin Impact App</h2>
-                            <p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mt-1">Genshin Impact</p>
-                        </div>
-                    </a>
-
-                    <a href="#" data-card
                        class="carousel-card animate-slide-up [animation-delay:600ms] opacity-0
-                              flex-shrink-0 w-96 flex flex-col gap-4 cursor-pointer group
+                              flex-shrink-0 w-[23vw] flex flex-col gap-4 cursor-pointer group
                               rounded-2xl">
-                        <div class="card-box relative w-full h-[395px] bg-slate-900/80 border border-slate-800/80 rounded-2xl
+                        <div class="card-box relative w-full h-[40vh] min-h-[320px] max-h-[560px] bg-slate-900/80 border border-slate-800/80 rounded-2xl
                                     overflow-visible transition-all duration-300 ease-out
                                     group-hover:bg-slate-900/90">
                             <img src="/assets/yinlin_placeholder-D7pucbhP.png"
                                  alt=""
-                                 class="absolute bottom-0 left-1/2 -translate-x-1/2 h-auto w-[400px] max-w-none
+                                 class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[110%] w-auto max-w-none
                                         object-contain pointer-events-none origin-bottom
                                         transition-all duration-300 ease-out
                                         group-hover:scale-[1.05] group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]" />
@@ -131,12 +135,32 @@
                         </div>
                     </a>
 
+                    <a href="#" data-card
+                       class="carousel-card animate-slide-up [animation-delay:400ms] opacity-0
+                              flex-shrink-0 w-[23vw] flex flex-col gap-4 cursor-pointer group
+                              rounded-2xl">
+                        <div class="card-box relative w-full h-[40vh] min-h-[320px] max-h-[560px] bg-slate-900/80 border border-slate-800/80 rounded-2xl
+                                    overflow-visible transition-all duration-300 ease-out
+                                    group-hover:bg-slate-900/90">
+                            <img src="/assets/ayaka_placeholder-1R7K9tnX.webp"
+                                 alt=""
+                                 class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[110%] w-auto max-w-none
+                                        object-contain pointer-events-none origin-bottom
+                                        transition-all duration-300 ease-out
+                                        group-hover:scale-[1.05] group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]" />
+                        </div>
+                        <div class="text-center pointer-events-none pb-2">
+                            <h2 class="card-title text-xl font-bold tracking-wide text-slate-300 transition-colors">Genshin Impact App</h2>
+                            <p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mt-1">Genshin Impact</p>
+                        </div>
+                    </a>
+
                     <!-- New Project card -->
                     <a href="#" data-card
                        class="carousel-card animate-slide-up [animation-delay:800ms] opacity-0
-                              flex-shrink-0 w-96 flex flex-col gap-4 cursor-pointer group
+                              flex-shrink-0 w-[23vw] flex flex-col gap-4 cursor-pointer group
                               rounded-2xl">
-                        <div class="card-box relative w-full h-[395px] rounded-2xl border-2 border-dashed border-slate-800
+                        <div class="card-box relative w-full h-[40vh] min-h-[320px] max-h-[560px] rounded-2xl border-2 border-dashed border-slate-800
                                     bg-slate-900/30 flex flex-col items-center justify-center gap-3
                                     text-slate-500 transition-all duration-300 ease-out
                                     group-hover:border-slate-600 group-hover:text-slate-300">
@@ -167,20 +191,20 @@
 
     </main>
 
-    <footer class="relative z-10 w-full max-w-7xl mx-auto border-t border-slate-700 pt-4 flex items-center justify-between text-xs font-semibold text-slate-500 tracking-wider uppercase">
+    <footer class="relative z-10 w-full max-w-7xl xl:max-w-[90vw] 2xl:max-w-[75vw] mx-auto border-t border-slate-700 pt-4 flex items-center justify-between text-xs font-semibold text-slate-500 tracking-wider uppercase">
         <div class="flex gap-6">
             <div class="flex items-center gap-1.5">
-                <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center text-[10px] font-bold border border-slate-700">A</span>
-                <span>Select</span>
+                <span class="key-hint-box">A</span>
+                <span class="key-hint-label">Select</span>
             </div>
             <div class="flex items-center gap-1.5">
-                <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center text-[10px] font-bold border border-slate-700">B</span>
-                <span>Back</span>
+                <span class="key-hint-box">B</span>
+                <span class="key-hint-label">Back</span>
             </div>
-            <div class="flex items-center gap-1.5">
-                <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center text-[10px] font-bold border border-slate-700">X</span>
-                <span>Options</span>
-            </div>
+            <button id="open-options-btn" class="flex items-center gap-1.5 hover:text-cyan-400 transition-colors cursor-pointer group">
+                <span class="key-hint-box">X</span>
+                <span class="key-hint-label">Options</span>
+            </button>
         </div>
         <div><span>ericOS v1.0.0</span></div>
     </footer>
