@@ -5,8 +5,7 @@
   "description": "Welcome to my personal homepage! This project is an interactive carousel-based website built with **Tailwind CSS** and **JavaScript**. It showcases all my applications that I have under this account and acts as a directory to those applications.",
   "scripts": {
     "dev": "vite",
-    "build": "tailwindcss -i ./style.css -o ./dist/style.css",
-    "watch": "tailwindcss -i ./style.css -o ./dist/style.css --watch"
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
