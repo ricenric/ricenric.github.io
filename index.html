@@ -12,7 +12,7 @@
     
     <canvas id="petal-canvas" class="absolute top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
 
-    <header class="relative z-10 flex justify-between items-center w-full max-w-7xl mx-auto border-b border-slate-700 pb-4">
+    <header class="relative z-10 flex justify-between items-center w-full max-w-7xl xl:max-w-[90vw] 2xl:max-w-[75vw] mx-auto border-b border-slate-700 pb-4">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-500/20">
                 EC
@@ -49,7 +49,7 @@
         </div>
     </aside>
 
-    <main class="relative z-10 w-full max-w-7xl mx-auto my-auto py-12 flex flex-col justify-center gap-6">
+    <main class="relative z-10 w-full max-w-7xl xl:max-w-[90vw] 2xl:max-w-[75vw] mx-auto my-auto py-12 flex flex-col justify-center gap-6">
 
         <div class="flex items-center gap-4">
 
@@ -78,12 +78,12 @@
 
                     <a href="/nte-checklist" data-card
                        class="carousel-card active animate-slide-up [animation-delay:0ms] opacity-0
-                              flex-shrink-0 w-96 flex flex-col gap-4 cursor-pointer group
+                              flex-shrink-0 w-[23vw] flex flex-col gap-4 cursor-pointer group
                               rounded-2xl">
-                        <div class="card-box relative w-full h-[395px] bg-slate-900/80 border border-slate-800/80 rounded-2xl overflow-visible transition-all duration-300 ease-out group-hover:bg-slate-900/90">
+                        <div class="card-box relative w-full h-[40vh] min-h-[320px] max-h-[560px] bg-slate-900/80 border border-slate-800/80 rounded-2xl overflow-visible transition-all duration-300 ease-out group-hover:bg-slate-900/90">
                             <img src="/assets/hotori_nte_application.png"
                                  alt="Hotori"
-                                 class="absolute bottom-0 left-1/2 -translate-x-1/2 h-auto w-[600px] max-w-none
+                                 class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[110%] w-auto max-w-none
                                         object-contain pointer-events-none origin-bottom
                                         transition-all duration-300 ease-out z-20
                                         group-hover:scale-[1.04] group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]" />
@@ -96,14 +96,14 @@
 
                     <a href="#" data-card
                        class="carousel-card animate-slide-up [animation-delay:200ms] opacity-0
-                              flex-shrink-0 w-96 flex flex-col gap-4 cursor-pointer group
+                              flex-shrink-0 w-[23vw] flex flex-col gap-4 cursor-pointer group
                               rounded-2xl">
-                        <div class="card-box relative w-full h-[395px] bg-slate-900/80 border border-slate-800/80 rounded-2xl
+                        <div class="card-box relative w-full h-[40vh] min-h-[320px] max-h-[560px] bg-slate-900/80 border border-slate-800/80 rounded-2xl
                                     overflow-visible transition-all duration-300 ease-out
                                     group-hover:bg-slate-900/90">
                             <img src="/assets/jingliu_placeholder.webp"
                                  alt=""
-                                 class="absolute -bottom-8 left-[60%] -translate-x-1/2 h-auto w-[450px] max-w-none
+                                 class="absolute -bottom-8 left-[60%] -translate-x-1/2 h-[110%] w-auto max-w-none
                                         object-contain pointer-events-none origin-bottom
                                         transition-all duration-300 ease-out
                                         group-hover:scale-[1.05] group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]" />
@@ -115,35 +115,15 @@
                     </a>
 
                     <a href="#" data-card
-                       class="carousel-card animate-slide-up [animation-delay:400ms] opacity-0
-                              flex-shrink-0 w-96 flex flex-col gap-4 cursor-pointer group
-                              rounded-2xl">
-                        <div class="card-box relative w-full h-[395px] bg-slate-900/80 border border-slate-800/80 rounded-2xl
-                                    overflow-visible transition-all duration-300 ease-out
-                                    group-hover:bg-slate-900/90">
-                            <img src="/assets/ayaka_placeholder.webp"
-                                 alt=""
-                                 class="absolute bottom-0 left-1/2 -translate-x-1/2 h-auto w-[680px] max-w-none
-                                        object-contain pointer-events-none origin-bottom
-                                        transition-all duration-300 ease-out
-                                        group-hover:scale-[1.05] group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]" />
-                        </div>
-                        <div class="text-center pointer-events-none pb-2">
-                            <h2 class="card-title text-xl font-bold tracking-wide text-slate-300 transition-colors">Genshin Impact App</h2>
-                            <p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mt-1">Genshin Impact</p>
-                        </div>
-                    </a>
-
-                    <a href="#" data-card
                        class="carousel-card animate-slide-up [animation-delay:600ms] opacity-0
-                              flex-shrink-0 w-96 flex flex-col gap-4 cursor-pointer group
+                              flex-shrink-0 w-[23vw] flex flex-col gap-4 cursor-pointer group
                               rounded-2xl">
-                        <div class="card-box relative w-full h-[395px] bg-slate-900/80 border border-slate-800/80 rounded-2xl
+                        <div class="card-box relative w-full h-[40vh] min-h-[320px] max-h-[560px] bg-slate-900/80 border border-slate-800/80 rounded-2xl
                                     overflow-visible transition-all duration-300 ease-out
                                     group-hover:bg-slate-900/90">
                             <img src="/assets/yinlin_placeholder.png"
                                  alt=""
-                                 class="absolute bottom-0 left-1/2 -translate-x-1/2 h-auto w-[400px] max-w-none
+                                 class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[110%] w-auto max-w-none
                                         object-contain pointer-events-none origin-bottom
                                         transition-all duration-300 ease-out
                                         group-hover:scale-[1.05] group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]" />
@@ -154,12 +134,32 @@
                         </div>
                     </a>
 
+                    <a href="#" data-card
+                       class="carousel-card animate-slide-up [animation-delay:400ms] opacity-0
+                              flex-shrink-0 w-[23vw] flex flex-col gap-4 cursor-pointer group
+                              rounded-2xl">
+                        <div class="card-box relative w-full h-[40vh] min-h-[320px] max-h-[560px] bg-slate-900/80 border border-slate-800/80 rounded-2xl
+                                    overflow-visible transition-all duration-300 ease-out
+                                    group-hover:bg-slate-900/90">
+                            <img src="/assets/ayaka_placeholder.webp"
+                                 alt=""
+                                 class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[110%] w-auto max-w-none
+                                        object-contain pointer-events-none origin-bottom
+                                        transition-all duration-300 ease-out
+                                        group-hover:scale-[1.05] group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.4)]" />
+                        </div>
+                        <div class="text-center pointer-events-none pb-2">
+                            <h2 class="card-title text-xl font-bold tracking-wide text-slate-300 transition-colors">Genshin Impact App</h2>
+                            <p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold mt-1">Genshin Impact</p>
+                        </div>
+                    </a>
+
                     <!-- New Project card -->
                     <a href="#" data-card
                        class="carousel-card animate-slide-up [animation-delay:800ms] opacity-0
-                              flex-shrink-0 w-96 flex flex-col gap-4 cursor-pointer group
+                              flex-shrink-0 w-[23vw] flex flex-col gap-4 cursor-pointer group
                               rounded-2xl">
-                        <div class="card-box relative w-full h-[395px] rounded-2xl border-2 border-dashed border-slate-800
+                        <div class="card-box relative w-full h-[40vh] min-h-[320px] max-h-[560px] rounded-2xl border-2 border-dashed border-slate-800
                                     bg-slate-900/30 flex flex-col items-center justify-center gap-3
                                     text-slate-500 transition-all duration-300 ease-out
                                     group-hover:border-slate-600 group-hover:text-slate-300">
@@ -190,7 +190,7 @@
 
     </main>
 
-    <footer class="relative z-10 w-full max-w-7xl mx-auto border-t border-slate-700 pt-4 flex items-center justify-between text-xs font-semibold text-slate-500 tracking-wider uppercase">
+    <footer class="relative z-10 w-full max-w-7xl xl:max-w-[90vw] 2xl:max-w-[75vw] mx-auto border-t border-slate-700 pt-4 flex items-center justify-between text-xs font-semibold text-slate-500 tracking-wider uppercase">
         <div class="flex gap-6">
             <div class="flex items-center gap-1.5">
                 <span class="key-hint-box">A</span>
