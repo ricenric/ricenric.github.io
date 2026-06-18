@@ -31,9 +31,25 @@ function update() {
     nextBtn.disabled = current === cards.length - 1;
 }
 
-prevBtn.addEventListener('click', () => { if (current > 0) { current--; update(); } });
-nextBtn.addEventListener('click', () => { if (current < cards.length - 1) { current++; update(); } });
-dots.forEach((dot, i) => dot.addEventListener('click', () => { current = i; update(); }));
+prevBtn.addEventListener('click', () => { 
+    if (current > 0) { 
+        current--; 
+        update(); 
+        cards[current].focus(); // Keep focus synced on click
+    } 
+});
+nextBtn.addEventListener('click', () => { 
+    if (current < cards.length - 1) { 
+        current++; 
+        update(); 
+        cards[current].focus(); // Keep focus synced on click
+    } 
+});
+dots.forEach((dot, i) => dot.addEventListener('click', () => { 
+    current = i; 
+    update(); 
+    cards[current].focus(); // Keep focus synced on dot click
+}));
 
 // 1. Helper to handle moving the carousel
 function goToCard(index) {
@@ -50,13 +66,36 @@ cards.forEach((card, index) => {
     });
 });
 
-// 3. Update the keydown listener to be cleaner
+// 3. Update the keydown listener to handle initial focus snapping
 document.addEventListener('keydown', e => {
+    // Check if any card currently has focus
+    const isAnyCardFocused = cards.some(card => document.activeElement === card);
+
     if (e.key === 'ArrowLeft') {
-        goToCard(current - 1);
+        e.preventDefault(); 
+        
+        if (!isAnyCardFocused) {
+            // First interaction: Snap focus to the currently visible card
+            cards[current].focus();
+        } else {
+            // Normal interaction: Move left
+            goToCard(current - 1);
+            cards[current].focus();
+        }
+        
     } else if (e.key === 'ArrowRight') {
-        goToCard(current + 1);
+        e.preventDefault(); 
+        
+        if (!isAnyCardFocused) {
+            // First interaction: Snap focus to the currently visible card
+            cards[current].focus();
+        } else {
+            // Normal interaction: Move right
+            goToCard(current + 1);
+            cards[current].focus();
+        }
     }
 });
 
+// Initialize on load
 update();
