@@ -109,8 +109,10 @@ The URL path stays the same either way — `public/assets/bg.jpg` is still acces
 ## 🎨 Design Philosophy
 `ericOS` is built to mimic the look and feel of a custom desktop operating system, prioritizing a coherent visual language through the use of glassmorphism, consistent dark-mode typography, and spatial navigation.
 
+---
+
 Built with ❤️ by Ricenric
 
-## Legend
+### Legend
 
 ❤️ = AI Assisted
