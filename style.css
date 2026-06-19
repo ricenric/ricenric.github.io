@@ -72,3 +72,21 @@
         @apply text-xs font-semibold text-slate-500 tracking-wider uppercase;
     }
 }
+
+/* Outside any @layer */
+#track-name {
+    white-space: nowrap;
+    display: inline-block;
+    min-width: 100%;      /* centers short text within the wrapper */
+    text-align: center;
+}
+
+@keyframes marquee {
+    0%, 15%   { transform: translateX(0); }   /* 15% of duration = pause length */
+    85%, 100% { transform: translateX(-50%); }
+}
+
+#track-name.scrolling {
+    min-width: unset;
+    animation: marquee 8s linear infinite;
+}
