@@ -63,6 +63,49 @@ The peaceiris/actions-gh-pages action performs the following steps behind the sc
 
 **Serve**: GitHub Pages is *configured to look at the root of the gh-pages branch*. This is important that its pointed to serve from there. Since the action just placed your dist/ files there, GitHub Pages treats those as your website's root directory and serves them instantly.
 
+# Static Assets in Vite
+
+## Why does `assets/` work without a `public/` folder?
+
+Because `index.html` sits at the **project root**, Vite treats the root as its serve directory during dev. Any folder at the root (like `assets/`) is accessible via `/assets/...` URLs automatically.
+
+During build, Vite scans `index.html`, finds all `/assets/...` references, and copies them into `dist/` automatically — no extra config needed.
+
+---
+
+## The Rule: Will Vite copy my file into `dist/`?
+
+| Where the reference lives | Example | Vite detects it? |
+|---|---|---|
+| `index.html` via `<img src="...">` | `<img src="/assets/hotori.png">` | ✅ Yes |
+| CSS via `url(...)` | `background-image: url('/assets/bg.jpg')` | ✅ Yes |
+| JS as a plain string | `const img = '/assets/something.png'` | ⚠️ No |
+| Not referenced, loaded dynamically | Set at runtime via JS | ⚠️ No |
+
+---
+
+## Where to put your files
+
+```
+assets/
+  character_cards/    ← referenced in index.html, safe where it is
+  card_backgrounds/   ← if loaded dynamically via JS, move to public/
+
+public/
+  assets/             ← anything Vite won't auto-detect goes here
+```
+
+Files in `public/` are always copied into `dist/` unconditionally, regardless of whether they're referenced anywhere.
+
+The URL path stays the same either way — `public/assets/bg.jpg` is still accessed as `/assets/bg.jpg`.
+
+---
+
+## TL;DR
+
+- **Hardcoded in HTML or CSS** → leave it in `assets/`, Vite handles it
+- **Set dynamically in JS at runtime** → put it in `public/assets/` to be safe
+
 ## 🎨 Design Philosophy
 `ericOS` is built to mimic the look and feel of a custom desktop operating system, prioritizing a coherent visual language through the use of glassmorphism, consistent dark-mode typography, and spatial navigation.
 

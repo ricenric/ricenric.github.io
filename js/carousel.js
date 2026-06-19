@@ -6,7 +6,6 @@ const nextBtn   = document.getElementById('next-btn');
 const dotsEl    = document.getElementById('dots');
 
 // card width (w-64 = 256px) + gap (gap-10 = 40px)
-const CARD_STEP = 384 + 40;
 let current = 0;
 
 // Build dots
@@ -16,7 +15,7 @@ dotsEl.innerHTML = cards.map((_, i) =>
 const dots = Array.from(dotsEl.querySelectorAll('.dot'));
 
 function update() {
-    track.style.transform = `translateX(-${current * CARD_STEP}px)`;
+    track.style.transform = `translateX(-${current * getCardStep()}px)`;
 
     cards.forEach((card, i) => card.classList.toggle('active', i === current));
 
@@ -96,6 +95,17 @@ document.addEventListener('keydown', e => {
         }
     }
 });
+
+window.addEventListener('resize', () => {
+    update();
+});
+
+// Add this function:
+function getCardStep() {
+    const card = cards[current];
+    const trackGap = parseFloat(getComputedStyle(track).gap) || 40;
+    return card.offsetWidth + trackGap;
+}
 
 // Initialize on load
 update();
