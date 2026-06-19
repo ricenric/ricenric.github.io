@@ -4,7 +4,6 @@ export function initPlayer() {
     const volumeSlider = document.getElementById('volume-slider');
     const volumeCount = document.getElementById('volume-count');
     const volumeLabel = document.getElementById('volume-label');
-    
 
     const bgmTracks = [
         { src: '/assets/sounds/bgm/from_the_beginning.mp3', name: 'From the Beginning' },
@@ -16,14 +15,13 @@ export function initPlayer() {
         { src: '/assets/sounds/bgm/temple_of_time.mp3', name: 'Temple of Time' },
         { src: '/assets/sounds/bgm/kerning_square.mp3', name: 'Kerning Square' },
         { src: '/assets/sounds/bgm/water_way.mp3', name: 'Perion: Water Way' },
-        { src: '/assets/sounds/bgm/the_worlds_end.mp3', name: 'Limen: The Worlds End' }
-        
-
+        { src: '/assets/sounds/bgm/the_worlds_end.mp3', name: 'Limen: The Worlds End' },
     ];
 
     let currentTrackIndex = 0;
     let isShuffled = true;
     let isRepeating = false;
+    let playHistory = [];
 
     const playPauseBtn = document.getElementById('play-pause-btn');
     const prevBtnBgm = document.getElementById('prev-btn-bgm');
@@ -36,7 +34,6 @@ export function initPlayer() {
     const bgmDuration = document.getElementById('bgm-duration');
     const trackName = document.getElementById('track-name');
 
-    // Set initial shuffle button appearance
     shuffleBtn?.classList.add('text-cyan-400');
     shuffleBtn?.classList.remove('text-slate-500');
 
@@ -54,9 +51,8 @@ export function initPlayer() {
         });
     }
 
-    // Lock controls on init
     setControlsEnabled(false);
-    
+
     function formatTime(secs) {
         const m = Math.floor(secs / 60);
         const s = Math.floor(secs % 60).toString().padStart(2, '0');
@@ -67,7 +63,6 @@ export function initPlayer() {
         bgm.src = bgmTracks[index].src;
         bgm.load();
 
-        // Reset first
         trackName.textContent = bgmTracks[index].name;
         trackName.classList.remove('scrolling');
 
@@ -83,6 +78,7 @@ export function initPlayer() {
     }
 
     function playTrack(index) {
+        playHistory.push(currentTrackIndex);
         currentTrackIndex = index;
         loadTrack(index);
         bgm.play().catch(() => {});
@@ -91,9 +87,18 @@ export function initPlayer() {
 
     function getNextIndex() {
         if (isShuffled) {
+            const recentlyPlayed = new Set([...playHistory.slice(-Math.floor(bgmTracks.length / 2)), currentTrackIndex]);
+
+            if (recentlyPlayed.size >= bgmTracks.length) {
+                recentlyPlayed.clear();
+                recentlyPlayed.add(currentTrackIndex);
+            }
+
             let next;
-            do { next = Math.floor(Math.random() * bgmTracks.length); }
-            while (next === currentTrackIndex && bgmTracks.length > 1);
+            do {
+                next = Math.floor(Math.random() * bgmTracks.length);
+            } while (recentlyPlayed.has(next));
+
             return next;
         }
         return (currentTrackIndex + 1) % bgmTracks.length;
@@ -136,8 +141,16 @@ export function initPlayer() {
 
     nextBtnBgm?.addEventListener('click', () => playTrack(getNextIndex()));
     prevBtnBgm?.addEventListener('click', () => {
-        if (bgm.currentTime > 3) { bgm.currentTime = 0; }
-        else { playTrack((currentTrackIndex - 1 + bgmTracks.length) % bgmTracks.length); }
+        if (bgm.currentTime > 3) {
+            bgm.currentTime = 0;
+        } else if (isShuffled && playHistory.length > 0) {
+            currentTrackIndex = playHistory.pop();
+            loadTrack(currentTrackIndex);
+            bgm.play().catch(() => {});
+            playPauseBtn.textContent = '⏸';
+        } else {
+            playTrack((currentTrackIndex - 1 + bgmTracks.length) % bgmTracks.length);
+        }
     });
 
     shuffleBtn?.addEventListener('click', () => {
@@ -171,7 +184,6 @@ export function initPlayer() {
         bgm.currentTime = pct * bgm.duration;
     });
 
-    // Init
     loadTrack(0);
     bgm.volume = 0.25;
     bgm.muted = true;
@@ -188,7 +200,6 @@ export function initPlayer() {
         });
     }
 
-    // Autoplay on first keydown
     function startBgm() {
         if (!bgm.muted) bgm.play().catch(() => {});
         document.removeEventListener('keydown', startBgm);
